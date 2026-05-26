@@ -12,6 +12,7 @@ main() {
   for REPO in $(git remote); do
     echo "Remote: $REPO"
     git push "$REPO"
+    echo
   done
   exit 0 # status success
 }
