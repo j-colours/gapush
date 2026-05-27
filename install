@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# install script
+# Author: jcolours
+# Date: 2026-05-26
+# Description: installs tool onto system
+
+if [ "$EUID" -ne 0 ]; then
+  echo "Error: Please use sudo..."
+  exit 1
+fi
+
+if [ -d "/usr/local/lib/gapush" ]; then
+  echo "Tool already installed on system..."
+  exit 0
+else
+  cp -vr $(pwd) /usr/local/lib/
+
+  chmod +x "/usr/local/lib/gapush/gapush.sh"
+
+  ln -sf /usr/local/lib/gapush/gapush.sh /usr/local/bin/gapush
+fi
+
+exit 0 # success
